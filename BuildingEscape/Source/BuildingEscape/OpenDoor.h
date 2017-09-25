@@ -24,15 +24,22 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-    virtual void OpenDoor();
+    void OpenDoor();
+    void CloseDoor();
 
 private:
-    UPROPERTY(VisibleAnywhere)
+    UPROPERTY(EditAnywhere)
     float OpenAngle = 90.0f;
 
     UPROPERTY(EditAnywhere)
     ATriggerVolume* PressurePlate;
 
+    UPROPERTY(EditAnywhere)
+    float DoorCloseDelay;
+
+    float LastDoorOpenTime;
+
     AActor* ActorThatOpens;
+    AActor* Owner;
 
 };
