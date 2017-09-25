@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Engine.h"
 #include "Components/ActorComponent.h"
 #include "OpenDoor.generated.h"
 
@@ -24,12 +24,16 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+    virtual void OpenDoor();
+
 private:
     UPROPERTY(VisibleAnywhere)
     float OpenAngle = 90.0f;
 
     UPROPERTY(EditAnywhere)
-    class ATriggerVolume* PressurePlate;
+    ATriggerVolume* PressurePlate;
 
+    UPROPERTY(EditAnywhere)
+    AActor* ActorThatOpens;
 
 };
