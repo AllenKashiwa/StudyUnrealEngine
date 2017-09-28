@@ -2,6 +2,7 @@
 
 #include "Grabber.h"
 
+#define OUT
 
 // Sets default values for this component's properties
 UGrabber::UGrabber()
@@ -29,6 +30,20 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	// Get the play view point this tick
+    FVector PlayerViewPointPos;
+    FRotator PlayerViewPointRotator;
+    GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(
+        OUT PlayerViewPointPos,
+        OUT PlayerViewPointRotator
+    );
+    // Log for test
+    UE_LOG(LogTemp, Warning, TEXT("Location:%s, Rotation:%s"),
+        *PlayerViewPointPos.ToString(),
+        *PlayerViewPointRotator.ToString()
+    );
+    // Ray-cast out to reach distance
+
+    // See what we hit
 }
 
